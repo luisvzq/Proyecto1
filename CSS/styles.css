@@ -8,12 +8,12 @@
 header {
   background-color: black;
   color: rgba(255, 255, 255, 0.96);
-  padding: 1.5rem;
+  padding: 1.5r;
   text-align: center;
 }
 
 main {
-  height: 90vh;
+  min-height: 90vh;
   width: 90%;
   margin: auto;
 }
@@ -26,9 +26,16 @@ main {
   align-items: center;
 }
 
-/* h2{
+#question {
+  display: flex;
+  height: 200px;
+  align-items: center;
   justify-content: center;
-} */
+}
+
+#question h2 {
+  width: 70%;
+}
 
 #title {
   /* display: flex; */
@@ -39,28 +46,51 @@ main {
 }
 
 #card {
-  width: 50%;
+  height: 500px;
+  width: 70%;
   display: flex;
   flex-direction: column;
   margin: 20px auto;
   align-items: center;
-  gap: 10px;
 }
 
-ul{
+ul {
+  display: flex;
   list-style: none;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 li {
-  width: 200px;
+  display: flex;
+  width: 100%;
   height: 100px;
   text-align: center;
-  
+}
 
-  
+.btns {
+  flex-grow: 1;
+  border-radius: 5%;
 }
 
 footer {
   background-color: black;
   color: rgba(255, 255, 255, 0.96);
+}
+
+@media screen and (min-width: 800px) {
+  ul {
+    height: 200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+  }
+  #card {
+    justify-content: center;
+  }
 }
