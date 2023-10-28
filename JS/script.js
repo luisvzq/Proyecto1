@@ -1,4 +1,4 @@
-"use strict";
+
 'use strict'
 
 
@@ -11,7 +11,7 @@ function buscaTarjeta(indexCard) {
                 return response.json();
             })
         .then(function (data) {              
-            
+            desestructurar(data);
             const quest= document.getElementById("questionContent");
             //console.log(data[indexCard].question);
             quest.textContent=data[indexCard].question;
@@ -37,7 +37,16 @@ function buscaTarjeta(indexCard) {
           })
          .catch ((error)=>{console.log(error.message)})
     }
-
+    let arrayTarjeta=[]
+    function desestructurar(data){
+        const{question, answers, correct}=data;
+        // console.log(answers[2]);
+        // console.log(question);
+        // console.log(correct);
+         arrayTarjeta.push(data);
+    
+    }
+    console.log(arrayTarjeta);
 
 
 
