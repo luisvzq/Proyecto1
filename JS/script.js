@@ -57,14 +57,23 @@ console.log(indiceAleatorioASeguir);
 buscaTarjeta(indiceAleatorioASeguir[0]);
 let botonPruebaContador = 0;
 
-const buttonPrueba = document.getElementById("botonPruebaNext"); // funcion respuestas random
-buttonPrueba.addEventListener("click", function () {
-  enable();
-  botonPruebaContador++;
-  buscaTarjeta(indiceAleatorioASeguir[botonPruebaContador]);
-});
+// const buttonPrueba = document.getElementById("botonPruebaNext"); // funcion respuestas random
+// buttonPrueba.addEventListener("click", function () {
+//   enable();
+//   botonPruebaContador++;
+//   buscaTarjeta(indiceAleatorioASeguir[botonPruebaContador]);
+// });
 
 //---------------------------------------------------------------------
+function clearDisabled() {
+  setTimeout(() => {
+    enable();
+    botonPruebaContador++;
+    buscaTarjeta(indiceAleatorioASeguir[botonPruebaContador]);
+    paragraphSolution.textContent = "";
+  }, 3000);
+}
+const paragraphSolution = document.getElementById("solution");
 const answer1 = document.getElementById("ans1");
 const answer2 = document.getElementById("ans2");
 const answer3 = document.getElementById("ans3");
@@ -88,47 +97,51 @@ function enable() {
 function comprobar(data) {
   const { correct } = data;
   answer1.addEventListener("click", () => {
-    // funcion excluyente (disable)
+    clearDisabled();
+
     disable();
     if (answer1.textContent === correct) {
       answer1.style.background = "green";
-      console.log("Respuesta 1 correcta");
+      paragraphSolution.textContent = "Respuesta 1 correcta";
     } else {
       answer1.style.background = "red";
-      console.log("Respuesta 1 incorrecta");
+      paragraphSolution.textContent = "Respuesta 1 incorrecta";
     }
   });
 
   answer2.addEventListener("click", () => {
+    clearDisabled();
     disable();
     if (answer2.textContent === correct) {
       answer2.style.background = "green";
-      console.log("Respuesta 2 correcta");
+      paragraphSolution.textContent = "Respuesta 2 correcta";
     } else {
       answer2.style.background = "red";
-      console.log("Respuesta 2 incorrecta");
+      paragraphSolution.textContent = "Respuesta 2 incorrecta";
     }
   });
 
   answer3.addEventListener("click", () => {
+    clearDisabled();
     disable();
     if (answer3.textContent === correct) {
       answer3.style.background = "green";
-      console.log("Respuesta 3 correcta");
+      paragraphSolution.textContent = "Respuesta 3 incorrecta";
     } else {
       answer3.style.background = "red";
-      console.log("Respuesta 3 incorrecta");
+      paragraphSolution.textContent = "Respuesta 3 incorrecta";
     }
   });
 
   answer4.addEventListener("click", () => {
+    clearDisabled();
     disable();
     if (answer4.textContent === correct) {
       answer4.style.background = "green";
-      console.log("Respuesta 4 correcta");
+      paragraphSolution.textContent = "Respuesta 4 incorrecta";
     } else {
       answer4.style.background = "red";
-      console.log("Respuesta 4 incorrecta");
+      paragraphSolution.textContent = "Respuesta 4 incorrecta";
     }
   });
 }
