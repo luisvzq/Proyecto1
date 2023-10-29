@@ -6,10 +6,12 @@ let answer2 = document.getElementById("ans2");
 let answer3 = document.getElementById("ans3");
 let answer4 = document.getElementById("ans4");
 let quest = document.getElementById("questionContent");
-const go = document.getElementById("btnGo");
+// let go = document.getElementById("btnGo");
 const buttonNext = document.getElementById("botonPruebaNext");
-
+let scores = 0;
+let boxScores = document.getElementById("scores");
 let indexCard = 0;
+
 const indiceAleatorioASeguir = [];
 
 //Obtenemos un array con 50 numeros ordenados de forma aleatoria, y sin repetirse. Este será el orden que seguirá el jugador
@@ -45,12 +47,13 @@ function getCard(numCard) {
       check(data[numCard]);
     })
     .catch((error) => {
-      console.log(error.message);
+      console.error(error.message);
     });
 }
 
 //Funcion para mostrar cada tarjeta en pantalla
 function showCard(card) {
+  boxScores.textContent = ` Your score: ${scores} points`;
   quest.textContent = card.question;
   answer1.textContent = card.answers[0];
   answer2.textContent = card.answers[1];
@@ -71,6 +74,7 @@ function check(card) {
       if (answer1.textContent === correct) {
         answer1.style.background = "green";
         paragraphSolution.textContent = "Correct! 👍";
+        scores += 5;
       } else {
         answer1.style.background = "red";
         paragraphSolution.textContent = "Incorrect! 👎";
@@ -86,6 +90,7 @@ function check(card) {
       if (answer2.textContent === correct) {
         answer2.style.background = "green";
         paragraphSolution.textContent = "Correct! 👍";
+        scores += 5;
       } else {
         answer2.style.background = "red";
         paragraphSolution.textContent = "Incorrect! 👎";
@@ -100,6 +105,7 @@ function check(card) {
       if (answer3.textContent === correct) {
         answer3.style.background = "green";
         paragraphSolution.textContent = "Correct! 👍";
+        scores += 5;
       } else {
         answer3.style.background = "red";
         paragraphSolution.textContent = "Incorrect! 👎";
@@ -114,6 +120,7 @@ function check(card) {
       if (answer4.textContent === correct) {
         answer4.style.background = "green";
         paragraphSolution.textContent = "Correct! 👍";
+        scores += 5;
       } else {
         answer4.style.background = "red";
         paragraphSolution.textContent = "Incorrect! 👎";
@@ -126,6 +133,10 @@ function check(card) {
 //Función con un botón Next para pasar a otra tarjeta
 buttonNext.addEventListener("click", function () {
   indexCard++;
+  if (indexCard === 1) {
+    window.location.assign("finalScores.html");
+  }
+
   console.log("siguiente", indiceAleatorioASeguir[indexCard]);
   getCard(indiceAleatorioASeguir[indexCard]);
   stopCounter();
