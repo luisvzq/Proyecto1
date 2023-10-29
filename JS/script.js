@@ -102,10 +102,10 @@ function comprobar(data) {
     disable();
     if (answer1.textContent === correct) {
       answer1.style.background = "green";
-      paragraphSolution.textContent = "Respuesta 1 correcta";
+      paragraphSolution.textContent = "Correct! 👍";
     } else {
       answer1.style.background = "red";
-      paragraphSolution.textContent = "Respuesta 1 incorrecta";
+      paragraphSolution.textContent = "Incorrect! 👎";
     }
   });
 
@@ -114,10 +114,10 @@ function comprobar(data) {
     disable();
     if (answer2.textContent === correct) {
       answer2.style.background = "green";
-      paragraphSolution.textContent = "Respuesta 2 correcta";
+      paragraphSolution.textContent = "Correct! 👍";
     } else {
       answer2.style.background = "red";
-      paragraphSolution.textContent = "Respuesta 2 incorrecta";
+      paragraphSolution.textContent = "Incorrect! 👎";
     }
   });
 
@@ -126,10 +126,10 @@ function comprobar(data) {
     disable();
     if (answer3.textContent === correct) {
       answer3.style.background = "green";
-      paragraphSolution.textContent = "Respuesta 3 incorrecta";
+      paragraphSolution.textContent = "Correct! 👍";
     } else {
       answer3.style.background = "red";
-      paragraphSolution.textContent = "Respuesta 3 incorrecta";
+      paragraphSolution.textContent = "Incorrect! 👎";
     }
   });
 
@@ -138,10 +138,10 @@ function comprobar(data) {
     disable();
     if (answer4.textContent === correct) {
       answer4.style.background = "green";
-      paragraphSolution.textContent = "Respuesta 4 incorrecta";
+      paragraphSolution.textContent = "Correct! 👍";
     } else {
       answer4.style.background = "red";
-      paragraphSolution.textContent = "Respuesta 4 incorrecta";
+      paragraphSolution.textContent = "Incorrect! 👎";
     }
   });
 }

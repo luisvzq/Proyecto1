@@ -8,7 +8,7 @@
 header {
   background-color: black;
   color: rgba(255, 255, 255, 0.96);
-  padding: 1.5r;
+  padding: 1.5rem;
   text-align: center;
 }
 
@@ -31,10 +31,25 @@ main {
   height: 200px;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 #question h2 {
   width: 70%;
+  margin-top: 2rem;
+}
+
+#contSolution {
+  width: 70%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#contSolution #solution {
+  width: 50%;
+  text-align: center;
 }
 
 #title {
@@ -90,7 +105,13 @@ footer {
     grid-template-rows: 1fr 1fr;
     gap: 10px;
   }
+
   #card {
+    height: 70%;
     justify-content: center;
+  }
+
+  #contSolution {
+    height: 400px;
   }
 }
