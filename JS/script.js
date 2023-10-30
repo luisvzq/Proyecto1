@@ -11,7 +11,6 @@ const buttonNext = document.getElementById("botonPruebaNext");
 let scores = 0;
 let boxScores = document.getElementById("scores");
 let indexCard = 0;
-
 const indiceAleatorioASeguir = [];
 
 //Obtenemos un array con 50 numeros ordenados de forma aleatoria, y sin repetirse. Este será el orden que seguirá el jugador
@@ -43,9 +42,12 @@ function getCard(numCard) {
     })
     .then(function (data) {
       console.log(numCard);
-      showCard(data[numCard]);
-      check(data[numCard]);
+      if (answer1) {
+        showCard(data[numCard]);
+        check(data[numCard]);
+      }
     })
+
     .catch((error) => {
       console.error(error.message);
     });
@@ -53,6 +55,7 @@ function getCard(numCard) {
 
 //Funcion para mostrar cada tarjeta en pantalla
 function showCard(card) {
+  console.log(card);
   boxScores.textContent = ` Your score: ${scores} points`;
   quest.textContent = card.question;
   answer1.textContent = card.answers[0];
@@ -62,85 +65,58 @@ function showCard(card) {
   enable();
 }
 
-//Funcion para comprobar resultado, al pulsar respuesta
 function check(card) {
   const { correct } = card;
   console.log("La correcta es:", correct);
 
-  answer1.addEventListener("click", () => {
+  function handleAnswerClick(answerElement) {
     disable();
-    answer1.style.background = "orange";
+    answerElement.style.background = "orange";
     setTimeout(() => {
-      if (answer1.textContent === correct) {
-        answer1.style.background = "green";
+      if (answerElement.textContent === correct) {
+        answerElement.style.background = "green";
         paragraphSolution.textContent = "Correct! 👍";
         scores += 5;
+        // nextQuestion();
       } else {
-        answer1.style.background = "red";
+        answerElement.style.background = "red";
         paragraphSolution.textContent = "Incorrect! 👎";
+        // nextQuestion();
       }
     }, 2000);
-
-    //timer();
-  });
-  answer2.addEventListener("click", () => {
-    disable();
-    answer2.style.background = "orange";
-    setTimeout(() => {
-      if (answer2.textContent === correct) {
-        answer2.style.background = "green";
-        paragraphSolution.textContent = "Correct! 👍";
-        scores += 5;
-      } else {
-        answer2.style.background = "red";
-        paragraphSolution.textContent = "Incorrect! 👎";
-      }
-      //timer();
-    }, 2000);
-  });
-  answer3.addEventListener("click", () => {
-    disable();
-    answer3.style.background = "orange";
-    setTimeout(() => {
-      if (answer3.textContent === correct) {
-        answer3.style.background = "green";
-        paragraphSolution.textContent = "Correct! 👍";
-        scores += 5;
-      } else {
-        answer3.style.background = "red";
-        paragraphSolution.textContent = "Incorrect! 👎";
-      }
-    }, 2000);
-    //timer();
-  });
-  answer4.addEventListener("click", () => {
-    disable();
-    answer4.style.background = "orange";
-    setTimeout(() => {
-      if (answer4.textContent === correct) {
-        answer4.style.background = "green";
-        paragraphSolution.textContent = "Correct! 👍";
-        scores += 5;
-      } else {
-        answer4.style.background = "red";
-        paragraphSolution.textContent = "Incorrect! 👎";
-      }
-      //timer();
-    }, 2000);
-  });
-}
-
-//Función con un botón Next para pasar a otra tarjeta
-buttonNext.addEventListener("click", function () {
-  indexCard++;
-  if (indexCard === 1) {
-    window.location.assign("finalScores.html");
   }
 
-  console.log("siguiente", indiceAleatorioASeguir[indexCard]);
-  getCard(indiceAleatorioASeguir[indexCard]);
-  stopCounter();
-});
+  const answerElements = [answer1, answer2, answer3, answer4];
+
+  answerElements.forEach((answerElement) => {
+    answerElement.addEventListener("click", () => {
+      handleAnswerClick(answerElement);
+    });
+  });
+}
+// function nextQuestion() {
+//   setTimeout(() => {
+//     indexCard++;
+//     // console.log("siguiente", indiceAleatorioASeguir[indexCard]);
+//     getCard(indiceAleatorioASeguir[indexCard]);
+//     stopCounter();
+//   }, 2000);
+// }
+//Función con un botón Next para pasar a otra tarjeta
+
+if (buttonNext) {
+  //con este if, hace el event si le llega el valor
+  buttonNext.addEventListener("click", function () {
+    indexCard++;
+    if (indexCard === 49) {
+      window.location.assign("finalScores.html");
+    }
+
+    console.log("siguiente", indiceAleatorioASeguir[indexCard]);
+    getCard(indiceAleatorioASeguir[indexCard]);
+    stopCounter();
+  });
+}
 
 // // Función con un temporizador para pasar a otra tarjeta
 // function timer() {
@@ -180,7 +156,7 @@ function enable() {
 let nIntervId;
 const boxCounter = document.getElementById("solution"); //Aqui el parrafo donde se mostrará
 function activeCounter() {
-  let numcounter = 20;
+  let numcounter = 10;
   // comprobar si ya se ha configurado un intervalo
   if (!nIntervId) {
     nIntervId = setInterval(() => {
@@ -190,6 +166,7 @@ function activeCounter() {
         clearInterval(nIntervId);
         boxCounter.textContent = "El tiempo se ha agotado";
         disable();
+        nextQuestion();
       }
     }, 1000);
   }
