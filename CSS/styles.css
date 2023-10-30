@@ -4,7 +4,29 @@
   box-sizing: border-box;
   /* border: dotted; */
 }
+@keyframes flicker {
+  0%,
+  20%,
+  40%,
+  60%,
+  70%,
+  80%,
+  90%,
+  100% {
+    background-color: green;
+  }
+  10%,
+  30%,
+  50% {
+    background-color: white;
+  }
+}
 
+#index0 {
+  background-image: url(../img/wallPapperProyect.png);
+  background-position: center;
+  background-size: cover;
+}
 header {
   background-color: black;
   color: rgba(255, 255, 255, 0.96);
@@ -56,8 +78,13 @@ main {
   /* display: flex; */
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: ;
   text-align: center;
+}
+#textStart {
+  font-size: 3rem;
+  color: rgb(8, 4, 4);
+  background-color: rgba(116, 114, 114, 0.322);
 }
 
 #card {

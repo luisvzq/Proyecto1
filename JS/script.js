@@ -2,6 +2,7 @@
 //Variables globales
 let audioMain = document.getElementById("mainAudio");
 let audioQuest = document.getElementById("audioQuest");
+let audioCount = document.getElementById("audioCount");
 let paragraphSolution = document.getElementById("solution");
 let answer1 = document.getElementById("ans1");
 let answer2 = document.getElementById("ans2");
@@ -74,7 +75,7 @@ function showCard(card) {
   answer4.textContent = card.answers[3];
   enable();
 }
-
+const answerElements = [answer1, answer2, answer3, answer4];
 function check(card) {
   const { correct } = card;
   console.log("La correcta es:", correct);
@@ -97,6 +98,19 @@ function check(card) {
       } else {
         answerElement.style.background = "red";
         paragraphSolution.textContent = "Incorrect! 👎";
+        answerElements.find((answerCorrect) => {
+          let prueba;
+          if (answerCorrect.textContent === correct) {
+            // pp
+            prueba = answerCorrect;
+            answerCorrect.style.animation = "flicker 3s";
+            setTimeout(() => {
+              answerCorrect.style.background = "green";
+              answerCorrect.style.animation = "none";
+            }, 2000);
+          }
+        });
+
         audio[0].play();
 
         setTimeout(() => {
@@ -107,7 +121,6 @@ function check(card) {
     }, 2000);
   }
   audio[1].play();
-  const answerElements = [answer1, answer2, answer3, answer4];
 
   answerElements.forEach((answerElement) => {
     answerElement.addEventListener("click", () => {
@@ -177,12 +190,16 @@ function enable() {
 let nIntervId;
 const boxCounter = document.getElementById("solution"); //Aqui el parrafo donde se mostrará
 function activeCounter() {
-  let numcounter = 10;
+  let numcounter = 20;
   // comprobar si ya se ha configurado un intervalo
   if (!nIntervId) {
     nIntervId = setInterval(() => {
       boxCounter.textContent = numcounter;
       numcounter--;
+      // if (numcounter <= 3) {PRUEBA DE CUENTA ATRAS
+      //   audio[1].pause();
+      //   audioCount.play();
+      // }
       if (numcounter < 0) {
         clearInterval(nIntervId);
         boxCounter.textContent = "El tiempo se ha agotado";
