@@ -31,7 +31,12 @@ console.log(indiceAleatorioASeguir);
 getCard(indiceAleatorioASeguir[indexCard]);
 
 //------------------------------------------------------------------------
-
+// Boton go para acceder a la pagina de juego.
+if (go) {
+  go.addEventListener("click", () => {
+    window.location.assign("./quiz.html");
+  });
+}
 /*
 Función para llamar a la API. 
   Nos traerá la tarjeta elegida por el orden aleatorio
@@ -77,27 +82,26 @@ function check(card) {
   function handleAnswerClick(answerElement) {
     disable();
     answerElement.style.background = "orange";
+    audio[1].pause();
     setTimeout(() => {
       if (answerElement.textContent === correct) {
         answerElement.style.background = "green";
         paragraphSolution.textContent = "Correct! 👍";
         scores += 5;
         audio[0].play();
-        audio[1].pause();
+
         setTimeout(() => {
           audio[1].play();
         }, 2500);
-
         // nextQuestion();
       } else {
         answerElement.style.background = "red";
         paragraphSolution.textContent = "Incorrect! 👎";
         audio[0].play();
-        audio[1].pause();
+
         setTimeout(() => {
           audio[1].play();
         }, 2500);
-
         // nextQuestion();
       }
     }, 2000);
@@ -195,8 +199,3 @@ function stopCounter() {
   nIntervId = null;
 }
 // ----------------------------------------------------------------------------------------
-if (go) {
-  go.addEventListener("click", () => {
-    window.location.assign("./quiz.html");
-  });
-}
