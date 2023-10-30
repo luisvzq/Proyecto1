@@ -1,5 +1,6 @@
 "use strict";
 //Variables globales
+let audio = document.getElementById("audioQuest");
 let paragraphSolution = document.getElementById("solution");
 let answer1 = document.getElementById("ans1");
 let answer2 = document.getElementById("ans2");
@@ -77,10 +78,12 @@ function check(card) {
         answerElement.style.background = "green";
         paragraphSolution.textContent = "Correct! 👍";
         scores += 5;
+        audio.play();
         // nextQuestion();
       } else {
         answerElement.style.background = "red";
         paragraphSolution.textContent = "Incorrect! 👎";
+        audio.play();
         // nextQuestion();
       }
     }, 2000);
@@ -166,7 +169,7 @@ function activeCounter() {
         clearInterval(nIntervId);
         boxCounter.textContent = "El tiempo se ha agotado";
         disable();
-        nextQuestion();
+        // nextQuestion();
       }
     }, 1000);
   }
