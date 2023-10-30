@@ -1,22 +1,25 @@
 "use strict";
 //Variables globales
-let audio = document.getElementById("audioQuest");
+let audioMain = document.getElementById("mainAudio");
+let audioQuest = document.getElementById("audioQuest");
 let paragraphSolution = document.getElementById("solution");
 let answer1 = document.getElementById("ans1");
 let answer2 = document.getElementById("ans2");
 let answer3 = document.getElementById("ans3");
 let answer4 = document.getElementById("ans4");
 let quest = document.getElementById("questionContent");
-// let go = document.getElementById("btnGo");
+let go = document.getElementById("btnGo");
 const buttonNext = document.getElementById("botonPruebaNext");
 let scores = 0;
 let boxScores = document.getElementById("scores");
 let indexCard = 0;
 const indiceAleatorioASeguir = [];
+const audio = [audioQuest, audioMain];
 
 //Obtenemos un array con 50 numeros ordenados de forma aleatoria, y sin repetirse. Este será el orden que seguirá el jugador
 //-------------------------------------------------------------------------
 let num = 0;
+
 for (let i = 0; i < 500; i++) {
   num = Math.floor(Math.random() * 50);
   if (!indiceAleatorioASeguir.includes(num)) {
@@ -26,6 +29,7 @@ for (let i = 0; i < 500; i++) {
 console.log(indiceAleatorioASeguir);
 
 getCard(indiceAleatorioASeguir[indexCard]);
+
 //------------------------------------------------------------------------
 
 /*
@@ -78,17 +82,27 @@ function check(card) {
         answerElement.style.background = "green";
         paragraphSolution.textContent = "Correct! 👍";
         scores += 5;
-        audio.play();
+        audio[0].play();
+        audio[1].pause();
+        setTimeout(() => {
+          audio[1].play();
+        }, 2500);
+
         // nextQuestion();
       } else {
         answerElement.style.background = "red";
         paragraphSolution.textContent = "Incorrect! 👎";
-        audio.play();
+        audio[0].play();
+        audio[1].pause();
+        setTimeout(() => {
+          audio[1].play();
+        }, 2500);
+
         // nextQuestion();
       }
     }, 2000);
   }
-
+  audio[1].play();
   const answerElements = [answer1, answer2, answer3, answer4];
 
   answerElements.forEach((answerElement) => {
@@ -181,3 +195,8 @@ function stopCounter() {
   nIntervId = null;
 }
 // ----------------------------------------------------------------------------------------
+if (go) {
+  go.addEventListener("click", () => {
+    window.location.assign("./quiz.html");
+  });
+}
