@@ -1,7 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter&family=Lato:ital,wght@0,300;1,300&family=Montserrat:wght@400;700&display=swap");
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Archivo Black", sans-serif;
+
   /* border: dotted; */
 }
 @keyframes flicker {
@@ -22,16 +26,15 @@
   }
 }
 
-#index0 {
-  background-image: url(../img/wallPapperProyect.png);
-  background-position: center;
-  background-size: cover;
-}
 header {
   background-color: black;
   color: rgba(255, 255, 255, 0.96);
-  padding: 1.5rem;
+  padding: 1rem;
   text-align: center;
+}
+
+header h1 {
+  text-transform: uppercase;
 }
 
 main {
@@ -47,6 +50,23 @@ main {
   /* text-align: center;  */
   align-items: center;
 }
+#index0 {
+  background-image: url(../img/wallPapperPrjct02.jpg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: black;
+}
+#index1 {
+  background-image: url(../img/wallPapperPrjct02.jpg);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#btnGo {
+  justify-content: center;
+}
 
 #question {
   display: flex;
@@ -57,8 +77,20 @@ main {
 }
 
 #question h2 {
+  font-size: 1rem;
+  text-align: center;
+  padding: 1rem;
+  background-color: black;
   width: 70%;
   margin-top: 2rem;
+  color: rgba(255, 255, 255, 0.96);
+  /* text-shadow: 1px 2px 4px rgb(255, 255, 255); */
+  text-transform: uppercase;
+}
+#contSolution {
+  text-shadow: 1px 2px 4px rgb(255, 255, 255);
+  text-transform: uppercase;
+  font-size: 0.7rem;
 }
 
 #contSolution {
@@ -75,16 +107,20 @@ main {
 }
 
 #title {
-  /* display: flex; */
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: ;
-  text-align: center;
+  align-items: center;
 }
 #textStart {
-  font-size: 3rem;
-  color: rgb(8, 4, 4);
-  background-color: rgba(116, 114, 114, 0.322);
+  text-align: center;
+  background-color: black;
+  font-family: "Archivo Black", sans-serif;
+  font-size: 1rem;
+  padding: 1rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.96);
+  /* text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5); */
 }
 
 #card {
@@ -122,6 +158,7 @@ li {
 footer {
   background-color: black;
   color: rgba(255, 255, 255, 0.96);
+  padding: 1.5rem;
 }
 
 @media screen and (min-width: 800px) {
@@ -140,5 +177,16 @@ footer {
 
   #contSolution {
     height: 400px;
+  }
+  #index0 {
+    background-size: cover;
+  }
+  #textStart {
+    font-size: 2rem;
+  }
+  #index1 {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 }
