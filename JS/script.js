@@ -15,6 +15,7 @@ let scores = 0;
 let boxScores = document.getElementById("scores");
 let indexCard = 0;
 let btnMute = document.getElementById("mute");
+let finalScore = document.getElementById("finalScore");
 const indiceAleatorioASeguir = [];
 const audio = [audioQuest, audioMain, audioCount];
 
@@ -74,6 +75,7 @@ function showCard(card) {
   answer2.textContent = card.answers[1];
   answer3.textContent = card.answers[2];
   answer4.textContent = card.answers[3];
+  boxCounter.style.color = "black";
   enable();
 }
 const answerElements = [answer1, answer2, answer3, answer4];
@@ -95,6 +97,7 @@ function check(card) {
         setTimeout(() => {
           audio[1].play();
         }, 2500);
+
         // nextQuestion();
       } else {
         answerElement.style.background = "red";
@@ -235,3 +238,4 @@ function stopCounter() {
   nIntervId = null;
 }
 // ----------------------------------------------------------------------------------------
+finalScore.textContent = ` Your score: ${scores} points`;
