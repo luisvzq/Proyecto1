@@ -14,8 +14,9 @@ const buttonNext = document.getElementById("botonPruebaNext");
 let scores = 0;
 let boxScores = document.getElementById("scores");
 let indexCard = 0;
+let btnMute = document.getElementById("mute");
 const indiceAleatorioASeguir = [];
-const audio = [audioQuest, audioMain];
+const audio = [audioQuest, audioMain, audioCount];
 
 //Obtenemos un array con 50 numeros ordenados de forma aleatoria, y sin repetirse. Este será el orden que seguirá el jugador
 //-------------------------------------------------------------------------
@@ -121,6 +122,19 @@ function check(card) {
     }, 2000);
   }
   audio[1].play();
+  btnMute.addEventListener("click", function () {
+    if (audio[0].muted || audio[1].muted || audio[2].muted) {
+      audio[0].muted = false;
+      audio[1].muted = false;
+      audio[2].muted = false;
+      btnMute.innerHTML = "Mute";
+    } else {
+      audio[0].muted = true;
+      audio[1].muted = true;
+      audio[2].muted = true;
+      btnMute.innerHTML = "Unmute";
+    }
+  });
 
   answerElements.forEach((answerElement) => {
     answerElement.addEventListener("click", () => {
@@ -190,16 +204,21 @@ function enable() {
 let nIntervId;
 const boxCounter = document.getElementById("solution"); //Aqui el parrafo donde se mostrará
 function activeCounter() {
-  let numcounter = 20;
+  let numcounter = 10;
   // comprobar si ya se ha configurado un intervalo
   if (!nIntervId) {
     nIntervId = setInterval(() => {
       boxCounter.textContent = numcounter;
       numcounter--;
-      // if (numcounter <= 3) {PRUEBA DE CUENTA ATRAS
-      //   audio[1].pause();
-      //   audioCount.play();
-      // }
+      if (numcounter <= 3) {
+        // audio[1].pause();
+        audio[2].play();
+        boxCounter.style.animation = "flickerCounter 3s";
+        setTimeout(() => {
+          boxCounter.style.color = "red";
+          boxCounter.style.animation = "none";
+        }, 500);
+      }
       if (numcounter < 0) {
         clearInterval(nIntervId);
         boxCounter.textContent = "El tiempo se ha agotado";

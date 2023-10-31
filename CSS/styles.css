@@ -26,6 +26,24 @@
   }
 }
 
+@keyframes flickerCounter {
+  0%,
+  20%,
+  40%,
+  60%,
+  80%,
+  90%,
+  100% {
+    color: red;
+  }
+  10%,
+  30%,
+  50%,
+  70% {
+    color: black;
+  }
+}
+
 header {
   background-color: black;
   color: rgba(255, 255, 255, 0.96);
