@@ -257,4 +257,3 @@ function stopCounter() {
   nIntervId = null;
 }
 // ----------------------------------------------------------------------------------------
-// finalScore.textContent = ` Your score: ${scores} points`;

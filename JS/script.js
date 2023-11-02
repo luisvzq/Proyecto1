@@ -34,10 +34,11 @@ async function main() {
   let quest = document.getElementById("questionContent");
   let answerElements = [answer1, answer2, answer3, answer4];
   let scores = 0;
+
   let boxScores = document.getElementById("scores");
 
   console.log("Array aleatorio", dataQuiz);
-  let indexCard = 0;
+  let indexCard = 47;
 
   //Funcion para mostrar cada tarjeta en pantalla
   function showCard(card) {
@@ -80,7 +81,9 @@ async function main() {
     let paragraphSolution = document.getElementById("solution");
     console.log("patata");
     disable();
+    answerElement.style.backgroundColor = "orange";
     audio[1].pause();
+
     setTimeout(() => {
       if (answerElement.textContent === correct) {
         answerElement.style.backgroundColor = "green";
@@ -110,17 +113,28 @@ async function main() {
           audio[1].play();
         }, 2500);
       }
-      // nextQuestion();
-    }, 2000);
-    setTimeout(() => {
-      indexCard++;
-      showCard(dataQuiz[indexCard]);
-      console.log("la siguiente es:", indexCard);
 
-      enable();
-      // activeCounter();
-      // check(dataQuiz[indexCard]);
-      // stopCounter();
+      setTimeout(() => {
+        indexCard++;
+        if (indexCard === 50) {
+          let card = document.querySelector("ul");
+          card.remove();
+          let finalScore = document.createElement("h3");
+          finalScore.textContent = `Your final score is ${scores}`;
+          document.getElementById("card").prepend(finalScore);
+
+          console.log();
+        } else {
+          showCard(dataQuiz[indexCard]);
+        }
+
+        console.log("la siguiente es:", indexCard);
+
+        enable();
+        // activeCounter();
+        // check(dataQuiz[indexCard]);
+        // stopCounter();
+      }, 2000);
     }, 2000);
   }
 
