@@ -46,6 +46,7 @@ Función para llamar a la API.
   Mostrará el resultado por pantalla
   Comprobará el resultado de la eleccion
 */
+
 function getCard(numCard) {
   fetch(
     "https://gist.githubusercontent.com/bertez/2528edb2ab7857dae29c39d1fb669d31/raw/4891dde8eac038aa5719512adee4b4243a8063fd/quiz.json"
@@ -55,6 +56,7 @@ function getCard(numCard) {
     })
     .then(function (data) {
       console.log(numCard);
+      console.log(data);
       if (answer1) {
         showCard(data[numCard]);
         check(data[numCard]);
@@ -68,6 +70,10 @@ function getCard(numCard) {
 
 //Funcion para mostrar cada tarjeta en pantalla
 function showCard(card) {
+  answer1 = document.getElementById("ans1");
+  answer2 = document.getElementById("ans2");
+  answer3 = document.getElementById("ans3");
+  answer4 = document.getElementById("ans4");
   console.log(card);
   boxScores.textContent = ` Your score: ${scores} points`;
   quest.textContent = card.question;
@@ -83,7 +89,9 @@ function check(card) {
   const { correct } = card;
   console.log("La correcta es:", correct);
 
-  function handleAnswerClick(answerElement) {
+  function handleAnswerClick(event) {
+    const answerElement = event.target;
+    console.log(event.target);
     disable();
     answerElement.style.background = "orange";
     audio[1].pause();
@@ -97,16 +105,11 @@ function check(card) {
         setTimeout(() => {
           audio[1].play();
         }, 2500);
-
-        // nextQuestion();
       } else {
         answerElement.style.background = "red";
         paragraphSolution.textContent = "Incorrect! 👎";
         answerElements.find((answerCorrect) => {
-          let prueba;
           if (answerCorrect.textContent === correct) {
-            // pp
-            prueba = answerCorrect;
             answerCorrect.style.animation = "flicker 3s";
             setTimeout(() => {
               answerCorrect.style.background = "green";
@@ -120,8 +123,8 @@ function check(card) {
         setTimeout(() => {
           audio[1].play();
         }, 2500);
-        // nextQuestion();
       }
+      nextQuestion();
     }, 2000);
   }
   audio[1].play();
@@ -130,44 +133,52 @@ function check(card) {
       audio[0].muted = false;
       audio[1].muted = false;
       audio[2].muted = false;
-      btnMute.innerHTML = "Mute";
     } else {
       audio[0].muted = true;
       audio[1].muted = true;
       audio[2].muted = true;
-      btnMute.innerHTML = "Unmute";
     }
   });
-
-  answerElements.forEach((answerElement) => {
-    answerElement.addEventListener("click", () => {
-      handleAnswerClick(answerElement);
+  if (btnMute) {
+    btnMute.addEventListener("click", () => {
+      console.log(btnMute.src);
+      if (btnMute.src.endsWith("unMute.png")) {
+        btnMute.src = "./img/mute.png";
+      } else if (btnMute.src.endsWith("mute.png")) {
+        btnMute.src = "./img/unMute.png";
+      }
     });
-  });
+  }
+  const ul = document.querySelector("ul");
+
+  const answerClone = ul.cloneNode(true);
+  ul.parentNode.replaceChild(answerClone, ul);
+  answerClone.addEventListener("click", handleAnswerClick);
 }
-// function nextQuestion() {
-//   setTimeout(() => {
-//     indexCard++;
-//     // console.log("siguiente", indiceAleatorioASeguir[indexCard]);
-//     getCard(indiceAleatorioASeguir[indexCard]);
-//     stopCounter();
-//   }, 2000);
-// }
+
+function nextQuestion() {
+  setTimeout(() => {
+    indexCard++;
+    // console.log("siguiente", indiceAleatorioASeguir[indexCard]);
+    getCard(indiceAleatorioASeguir[indexCard]);
+    // stopCounter();
+  }, 2000);
+}
 //Función con un botón Next para pasar a otra tarjeta
 
-if (buttonNext) {
-  //con este if, hace el event si le llega el valor
-  buttonNext.addEventListener("click", function () {
-    indexCard++;
-    if (indexCard === 49) {
-      window.location.assign("finalScores.html");
-    }
+// if (buttonNext) {
+//   //con este if, hace el event si le llega el valor
+//   buttonNext.addEventListener("click", function () {
+//     indexCard++;
+//     if (indexCard === 49) {
+//       window.location.assign("finalScores.html");
+//     }
 
-    console.log("siguiente", indiceAleatorioASeguir[indexCard]);
-    getCard(indiceAleatorioASeguir[indexCard]);
-    stopCounter();
-  });
-}
+//     console.log("siguiente", indiceAleatorioASeguir[indexCard]);
+//     getCard(indiceAleatorioASeguir[indexCard]);
+//     stopCounter();
+//   });
+// }
 
 // // Función con un temporizador para pasar a otra tarjeta
 // function timer() {
@@ -199,7 +210,7 @@ function enable() {
   answer2.style.backgroundColor = "white";
   answer3.style.backgroundColor = "white";
   answer4.style.backgroundColor = "white";
-  activeCounter();
+  // activeCounter();
 }
 
 // Cuenta atrás-----------------------------------------------------------------------
@@ -238,4 +249,4 @@ function stopCounter() {
   nIntervId = null;
 }
 // ----------------------------------------------------------------------------------------
-finalScore.textContent = ` Your score: ${scores} points`;
+// finalScore.textContent = ` Your score: ${scores} points`;
