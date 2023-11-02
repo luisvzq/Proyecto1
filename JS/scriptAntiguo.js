@@ -86,8 +86,6 @@ function showCard(card) {
 }
 const answerElements = [answer1, answer2, answer3, answer4];
 
-
-
 function check(card) {
   const { correct } = card;
   console.log("La correcta es:", correct);
@@ -127,6 +125,12 @@ function check(card) {
           audio[1].play();
         }, 2500);
       }
+      setTimeout(() => {
+        indexCard++;
+        // console.log("siguiente", indiceAleatorioASeguir[indexCard]);
+        getCard(indiceAleatorioASeguir[indexCard]);
+        // stopCounter();
+      }, 2000);
       nextQuestion();
     }, 2000);
   }
@@ -159,17 +163,14 @@ function check(card) {
   answerClone.addEventListener("click", handleAnswerClick);
 }
 
-function nextQuestion() {
-  setTimeout(() => {
-    indexCard++;
-    // console.log("siguiente", indiceAleatorioASeguir[indexCard]);
-    getCard(indiceAleatorioASeguir[indexCard]);
-    // stopCounter();
-  }, 2000);
-}
-
-
-
+// function nextQuestion() {
+//   setTimeout(() => {
+//     indexCard++;
+//     // console.log("siguiente", indiceAleatorioASeguir[indexCard]);
+//     getCard(indiceAleatorioASeguir[indexCard]);
+//     // stopCounter();
+//   }, 2000);
+// }
 
 //Función con un botón Next para pasar a otra tarjeta
 
