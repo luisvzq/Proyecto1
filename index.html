@@ -28,9 +28,21 @@
         </button>
       </section>
     </main>
+  
     <footer>
       © Angel Ares, David Barreira, Luis Díaz, Naima El Gargari y Patricia Lojo
     </footer>
-    <script src="./JS/script.js"></script>
+    <!-- <script src="./JS/script.js"></script> -->
+    <script>
+      const go= document.getElementById("btnGo");
+
+      // Boton go para acceder a la pagina de juego.    
+    
+      go.addEventListener("click", () => {
+          window.location.assign("./quiz.html");
+          });
+
+
+</script>
   </body>
 </html>
