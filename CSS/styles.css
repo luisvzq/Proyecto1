@@ -82,8 +82,42 @@ main {
   background-attachment: fixed;
 }
 
+#buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem;
+}
+
+#btnBack {
+  width: 80px;
+  height: 40px;
+}
+
+#counter {
+  text-align: center;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow: 1px 0.5px 2px rgb(0, 0, 0);
+}
+
+#btnBack a {
+  text-decoration: none;
+  color: black;
+  /* text-shadow: 1px 0.5px 2px rgb(0, 0, 0); */
+}
+
 #btnGo {
+  margin: 2rem;
   justify-content: center;
+  width: 80px;
+  height: 40px;
+  /* text-shadow: 1px 0.5px 2px rgb(0, 0, 0); */
+}
+
+#mute {
+  width: 40px;
+  height: 40px;
 }
 
 #question {
@@ -102,26 +136,34 @@ main {
   width: 70%;
   margin-top: 2rem;
   color: rgba(255, 255, 255, 0.96);
-  /* text-shadow: 1px 2px 4px rgb(255, 255, 255); */
+  text-shadow: 1px 0.5px 2px rgb(255, 255, 255);
   text-transform: uppercase;
 }
 #contSolution {
-  text-shadow: 1px 2px 4px rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   text-transform: uppercase;
   font-size: 0.7rem;
-}
-
-#contSolution {
   width: 70%;
   height: 200px;
-  display: flex;
   align-items: center;
-  justify-content: center;
 }
 
-#contSolution #solution {
-  width: 50%;
+.solutionScore {
   text-align: center;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow: 1px 0.5px 2px rgb(0, 0, 0);
+}
+h3 {
+  background-color: black;
+  padding: 1rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow: 1px 0.5px 2px rgb(0, 0, 0);
 }
 
 #title {
@@ -161,7 +203,7 @@ ul {
   justify-content: space-between;
 }
 
-li {
+ul button {
   display: flex;
   width: 100%;
   height: 100px;

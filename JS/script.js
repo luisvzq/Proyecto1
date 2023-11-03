@@ -56,6 +56,33 @@ async function main() {
 
   showCard(dataQuiz[indexCard]);
   console.log("Siguiente pregunta: ", dataQuiz[indexCard]);
+  let audioMain = document.getElementById("mainAudio");
+  let audioQuest = document.getElementById("audioQuest");
+  let audioCount = document.getElementById("audioCount");
+  const audio = [audioQuest, audioMain, audioCount];
+  audio[1].play();
+  let btnMute = document.getElementById("mute");
+  btnMute.addEventListener("click", function () {
+    if (audio[0].muted || audio[1].muted || audio[2].muted) {
+      audio[0].muted = false;
+      audio[1].muted = false;
+      audio[2].muted = false;
+    } else {
+      audio[0].muted = true;
+      audio[1].muted = true;
+      audio[2].muted = true;
+    }
+  });
+  if (btnMute) {
+    btnMute.addEventListener("click", () => {
+      console.log(btnMute.src);
+      if (btnMute.src.endsWith("unMute.png")) {
+        btnMute.src = "./img/mute.png";
+      } else if (btnMute.src.endsWith("mute.png")) {
+        btnMute.src = "./img/unMute.png";
+      }
+    });
+  }
 
   // function check() {
   //   let btnMute = document.getElementById("mute");
@@ -67,22 +94,54 @@ async function main() {
   // } //final del check
 
   // check(dataQuiz[indexCard]);
+  let nIntervId;
+  const boxCounter = document.getElementById("counter");
+  function activeCounter() {
+    let numcounter = 10;
+    boxCounter.style.color = "white";
+    // comprobar si ya se ha configurado un intervalo
+    if (!nIntervId) {
+      nIntervId = setInterval(() => {
+        boxCounter.textContent = numcounter;
+        numcounter--;
+        if (numcounter <= 3) {
+          // audio[1].pause();
+          audio[2].play();
+          boxCounter.style.animation = "flickerCounter 3s";
+          setTimeout(() => {
+            boxCounter.style.color = "red";
+            boxCounter.style.animation = "none";
+          }, 500);
+        }
+        if (numcounter < 0) {
+          clearInterval(nIntervId);
+          boxCounter.textContent = "TIME OUT!";
+          disable();
+        }
+      }, 1000);
+    }
+  }
+
+  activeCounter();
+
+  function stopCounter() {
+    clearInterval(nIntervId);
+    // liberar nuestro inervalId de la variable
+    nIntervId = null;
+  }
 
   function handleAnswerClick(event) {
     const { correct } = dataQuiz[indexCard];
     console.log(`la respuesta es ${correct}`);
     // console.log(card.target);
     const answerElement = event.currentTarget;
-    let audioMain = document.getElementById("mainAudio");
-    let audioQuest = document.getElementById("audioQuest");
-    let audioCount = document.getElementById("audioCount");
-    const audio = [audioQuest, audioMain, audioCount];
-    audio[1].play();
+
     let paragraphSolution = document.getElementById("solution");
-    console.log("patata");
     disable();
     answerElement.style.backgroundColor = "orange";
     audio[1].pause();
+    audio[2].pause();
+    stopCounter();
 
     setTimeout(() => {
       if (answerElement.textContent === correct) {
@@ -90,7 +149,9 @@ async function main() {
         paragraphSolution.textContent = "Correct! 👍";
         scores += 5;
         audio[0].play();
-
+        setTimeout(() => {
+          paragraphSolution.textContent = "";
+        }, 2000);
         setTimeout(() => {
           audio[1].play();
         }, 2500);
@@ -105,6 +166,9 @@ async function main() {
               answerCorrect.style.animation = "none";
             }, 2000);
           }
+          setTimeout(() => {
+            paragraphSolution.textContent = "";
+          }, 2000);
         });
 
         audio[0].play();
@@ -118,9 +182,13 @@ async function main() {
         indexCard++;
         if (indexCard === 50) {
           let card = document.querySelector("ul");
+          boxCounter.remove();
+          quest.remove();
+          paragraphSolution.remove();
+          boxScores.remove();
           card.remove();
           let finalScore = document.createElement("h3");
-          finalScore.textContent = `Your final score is ${scores}`;
+          finalScore.textContent = `Your final score is ${scores} points!`;
           document.getElementById("card").prepend(finalScore);
 
           console.log();
@@ -132,24 +200,11 @@ async function main() {
 
         enable();
         // activeCounter();
-        // check(dataQuiz[indexCard]);
+        // // check(dataQuiz[indexCard]);
         // stopCounter();
       }, 2000);
     }, 2000);
   }
-
-  // function nextQuestion() {
-  //     // setTimeout(() => {
-  //       showCard(dataQuiz[indexCard]);
-  //       indexCard++;
-  //       console.log("la siguiente es:", indexCard);
-
-  //       enable();
-  //       // activeCounter();
-  //       check(dataQuiz[indexCard]);
-  //       // stopCounter();
-  //     // }, 2000);
-  //   }
 
   //Función para deshabilitar los botones una vez se ha seleccionado una respuesta
   function disable() {
@@ -167,8 +222,13 @@ async function main() {
       element.style.color = "black";
       element.removeAttribute("disabled");
       element.style.backgroundColor = "white";
+      activeCounter();
     }
   }
 } //Final function main
 
 main();
+
+// PENDIENTE
+// cambio automático de card cuando TIME OUT!
+// audio[2].pause(); en finalScore

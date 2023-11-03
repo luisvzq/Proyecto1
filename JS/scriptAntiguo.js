@@ -227,6 +227,7 @@ let nIntervId;
 const boxCounter = document.getElementById("solution"); //Aqui el parrafo donde se mostrará
 function activeCounter() {
   let numcounter = 10;
+  boxCounter.style.color = "white";
   // comprobar si ya se ha configurado un intervalo
   if (!nIntervId) {
     nIntervId = setInterval(() => {

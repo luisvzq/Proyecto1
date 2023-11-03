@@ -17,28 +17,32 @@
       <h1>Film Quiz</h1>
     </header>
     <main>
-      <button id="btnBack"><a href="./index.html">Back!</a></button>
+      <div id="buttons">
+        <button id="btnBack"><a href="./index.html">BACK</a></button>
+        <h4 id="counter"></h4>
+        <img id="mute" src="./img/mute.png" alt="" />
+      </div>
       <section id="question">
         <h2 id="questionContent">
           For the film "Raiders of The Lost Ark", what was Harrison Ford sick
           with during the filming of the Cairo chase?
         </h2>
         <div id="contSolution">
-          <p id="solution"></p>
-          <p id="scores"></p>
+          <p id="scores" class="solutionScore"></p>
+          <p id="solution" class="solutionScore"></p>
         </div>
       </section>
 
       <section id="card">
         <ul>
-          <li id="ans1" class="btns">resp 1</li>
-          <li id="ans2" class="btns">resp 2</li>
-          <li id="ans3" class="btns">resp 3</li>
-          <li id="ans4" class="btns">resp 4</li>
+          <button id="ans1" class="btns">resp 1</button>
+          <button id="ans2" class="btns">resp 2</button>
+          <button id="ans3" class="btns">resp 3</button>
+          <button id="ans4" class="btns">resp 4</button>
         </ul>
       </section>
       <!-- <button id="mute"> -->
-      <img id="mute" src="./img/mute.png" alt="" />
+
       <!-- </button> -->
     </main>
     <footer>
