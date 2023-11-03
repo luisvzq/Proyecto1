@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter&family=Lato:ital,wght@0,300;1,300&family=Montserrat:wght@400;700&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter&family=Lato:ital,wght@0,300;1,300&family=Montserrat:wght@400;700&family=Raleway:wght@700&display=swap");
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: "Archivo Black", sans-serif;
-
-  /* border: dotted; */
 }
 @keyframes flicker {
   0%,
@@ -65,7 +65,7 @@ main {
   display: flex;
 
   justify-content: center;
-  /* text-align: center;  */
+
   align-items: center;
 }
 #index0 {
@@ -92,6 +92,7 @@ main {
 #btnBack {
   width: 80px;
   height: 40px;
+  cursor: pointer;
 }
 
 #counter {
@@ -104,15 +105,18 @@ main {
 #btnBack a {
   text-decoration: none;
   color: black;
-  /* text-shadow: 1px 0.5px 2px rgb(0, 0, 0); */
 }
 
 #btnGo {
   margin: 2rem;
   justify-content: center;
-  width: 80px;
+  width: 40px;
   height: 40px;
-  /* text-shadow: 1px 0.5px 2px rgb(0, 0, 0); */
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.96);
+  background-color: rgba(33, 33, 121, 0.8);
 }
 
 #mute {
@@ -180,7 +184,6 @@ h3 {
   padding: 1rem;
   font-weight: bold;
   color: rgba(255, 255, 255, 0.96);
-  /* text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5); */
 }
 
 #card {
@@ -208,10 +211,19 @@ ul button {
   width: 100%;
   height: 100px;
   background-color: white;
+  font-size: 1rem;
   align-items: center;
   justify-content: center;
   flex-grow: 1;
-  border-radius: 5%;
+  border-radius: 8%;
+  border: solid, gold, 10px;
+  text-shadow: 1px 0.5px 2px rgb(255, 255, 255);
+}
+
+.btns:hover {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.96);
+  background-color: rgba(33, 33, 121, 0.8);
 }
 
 footer {
@@ -247,5 +259,10 @@ footer {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+  }
+  #btnGo {
+    width: 60px;
+    height: 60px;
+    font-size: 1.4rem;
   }
 }
