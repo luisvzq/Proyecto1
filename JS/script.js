@@ -85,7 +85,7 @@ async function main() {
     let nIntervId;
     const boxCounter = document.getElementById("counter");
     function activeCounter() {
-      let numcounter = 10;
+      let numcounter = 15;
       boxCounter.style.color = "white";
       // comprobar si ya se ha configurado un intervalo
       if (!nIntervId) {
