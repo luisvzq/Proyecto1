@@ -243,7 +243,9 @@ ul button {
 footer {
   background-color: black;
   color: rgba(255, 255, 255, 0.96);
-  padding: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+  opacity: 0.8;
 }
 
 @media screen and (min-width: 800px) {

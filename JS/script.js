@@ -58,18 +58,26 @@ async function main() {
     let audioMain = document.getElementById("mainAudio");
     let audioQuest = document.getElementById("audioQuest");
     let audioCount = document.getElementById("audioCount");
-    const audio = [audioQuest, audioMain, audioCount];
+    let audioQuestIncorrect = document.getElementById("audioQuestIncorrect");
+    const audio = [audioQuest, audioMain, audioCount, audioQuestIncorrect];
     audio[1].play();
     let btnMute = document.getElementById("mute");
     btnMute.addEventListener("click", function () {
-      if (audio[0].muted || audio[1].muted || audio[2].muted) {
+      if (
+        audio[0].muted ||
+        audio[1].muted ||
+        audio[2].muted ||
+        audio[3].muted
+      ) {
         audio[0].muted = false;
         audio[1].muted = false;
         audio[2].muted = false;
+        audio[3].muted = false;
       } else {
         audio[0].muted = true;
         audio[1].muted = true;
         audio[2].muted = true;
+        audio[3].muted = true;
       }
     });
     if (btnMute) {
@@ -122,6 +130,7 @@ async function main() {
                 audio[0].muted = true;
                 audio[1].muted = true;
                 audio[2].muted = true;
+                audio[3].muted = true;
               } else {
                 showCard(dataQuiz[indexCard]);
               }
@@ -182,7 +191,7 @@ async function main() {
             }, 2000);
           });
 
-          audio[0].play();
+          audio[3].play();
 
           setTimeout(() => {
             audio[1].play();
@@ -204,6 +213,7 @@ async function main() {
             audio[0].muted = true;
             audio[1].muted = true;
             audio[2].muted = true;
+            audio[3].muted = true;
           } else {
             showCard(dataQuiz[indexCard]);
           }
