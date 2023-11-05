@@ -103,6 +103,7 @@ main {
   justify-content: end;
   min-width: 100px;
   min-height: 40px;
+  margin: 2rem;
 }
 #btn_50 {
   border-radius: 50%;
