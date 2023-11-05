@@ -5,6 +5,7 @@
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 16px;
+  /* border: dotted; */
 }
 
 @keyframes flicker {
@@ -96,6 +97,21 @@ main {
   border-radius: 4px;
   opacity: 0.8;
 }
+
+#mute_50{  
+  display: flex;  
+  justify-content: end;
+  min-width: 100px;
+  min-height: 40px;
+}
+#cincuenta{
+  border-radius: 50%;
+  background-color: grey;
+  color:white;
+  border: none;
+  cursor: pointer;
+}
+
 
 #counter {
   text-align: center;

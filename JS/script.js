@@ -240,6 +240,37 @@ async function main() {
         activeCounter();
       }
     }
+
+
+    //Boton 50%  
+    //----------------------------------------------------------------------        
+    const cincuenta= document.getElementById("cincuenta");
+    
+      cincuenta.addEventListener('click', ()=>{
+        let incorret=[];
+        let random= Math.floor(Math.random()*2);   
+  
+        for(let item of answerElements){        
+            if(item.textContent!==dataQuiz[indexCard].correct){
+              incorret.push(item)
+            }
+          }    
+    
+          incorret.splice(random,1);//Borramos una de las respuestas incorrectas          
+      
+          for(let item of incorret){
+            item.setAttribute("disabled", "true"); 
+            // console.log(item);
+          }
+  
+          cincuenta.setAttribute("disabled", "true");  
+          cincuenta.style.color="red";    
+
+      });        
+  
+    //------------------------------------------------------------------------
+
+
     //Final function main
   } catch (error) {
     console.error("Data could not be loaded. Please try again later.", error);
