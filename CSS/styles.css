@@ -98,20 +98,22 @@ main {
   opacity: 0.8;
 }
 
-#mute_50{  
-  display: flex;  
+#cont_50 {
+  display: flex;
   justify-content: end;
   min-width: 100px;
   min-height: 40px;
 }
-#cincuenta{
+#btn_50 {
   border-radius: 50%;
-  background-color: grey;
-  color:white;
   border: none;
   cursor: pointer;
+  background-color: rgba(123, 109, 34, 0.8);
+  color: black;
+  font-weight: 600;
+  width: 40px;
+  height: 40px;
 }
-
 
 #counter {
   text-align: center;
