@@ -33,6 +33,7 @@ async function main() {
     let answer3 = document.getElementById("ans3");
     let answer4 = document.getElementById("ans4");
     let quest = document.getElementById("questionContent");
+    let questNum = document.getElementById("questionNumber");
     let answerElements = [answer1, answer2, answer3, answer4];
     let scores = 0;
 
@@ -44,6 +45,7 @@ async function main() {
     function showCard(card) {
       boxScores.textContent = `Your score: ${scores} points`;
       quest.textContent = card.question;
+      questNum.textContent = `Question: ${indexCard + 1}/50`;
       answerElements.forEach((element, index = 0) => {
         element.textContent = card.answers[index];
         index++;
@@ -225,6 +227,7 @@ async function main() {
 
     //Función para deshabilitar los botones una vez se ha seleccionado una respuesta
     function disable() {
+      fifty.setAttribute("disabled", "true");
       for (let element of answerElements) {
         element.style.color = "grey";
         element.setAttribute("disabled", "true");
@@ -233,6 +236,7 @@ async function main() {
 
     //Función para habilitar los botones una vez se ha cambiado la tajeta
     function enable() {
+      fifty.removeAttribute("disabled");
       for (let element of answerElements) {
         element.removeAttribute("style");
         element.removeAttribute("disabled");

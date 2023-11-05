@@ -100,7 +100,7 @@ main {
 
 #cont_50 {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   min-width: 100px;
   min-height: 40px;
   margin: 2rem;
@@ -114,6 +114,16 @@ main {
   font-weight: 600;
   width: 40px;
   height: 40px;
+}
+
+#questionNumber {
+  font-weight: 600;
+  width: 200px;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow: 1px 0.5px 2px rgb(0, 0, 0);
+  font-weight: 600;
+  opacity: 0.8;
 }
 
 #counter {
