@@ -56,7 +56,7 @@ header h1 {
   text-transform: uppercase;
   font-size: 2rem;
 }
-body{
+body {
   display: flex;
   flex-direction: column;
 }
@@ -111,7 +111,7 @@ body{
 
 #cont_50 {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   min-width: 100px;
   min-height: 40px;
   margin: 2rem;
@@ -203,6 +203,11 @@ h3 {
   color: rgba(255, 255, 255, 0.96);
   text-shadow: 1px 0.5px 2px rgb(0, 0, 0);
 }
+#questionNumber {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow: 1px 0.5px 2px rgb(0, 0, 0);
+}
 
 /* #title {
   display: flex;
@@ -219,6 +224,7 @@ h3 {
   padding: 1rem;
   font-weight: bold;
   color: rgba(255, 255, 255, 0.96);
+  opacity: 0.8;
 }
 
 #card {
@@ -263,8 +269,6 @@ ul button {
   font-size: 1rem;
   font-weight: 600;
 }
-
-
 
 footer {
   background-color: black;
