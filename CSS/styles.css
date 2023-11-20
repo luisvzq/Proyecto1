@@ -56,26 +56,37 @@ header h1 {
   text-transform: uppercase;
   font-size: 2rem;
 }
+body{
+  display: flex;
+  flex-direction: column;
+}
 
-main {
-  min-height: 90vh;
-  width: 90%;
-  margin: auto;
+#index1 main {
+  flex-grow: 1;
 }
 
 #index {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 90%;
+  margin: auto;
+  flex-grow: 1;
+  flex-direction: column;
 }
 #index0 {
+  min-height: 100vh;
   background-image: url(../img/wallPapperPrjct02.jpg);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
   background-color: black;
+  opacity: 0.8;
 }
 #index1 {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   background-image: url(../img/wallPapperPrjct02.jpg);
   background-position: center;
   background-size: cover;
@@ -100,7 +111,7 @@ main {
 
 #cont_50 {
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   min-width: 100px;
   min-height: 40px;
   margin: 2rem;
@@ -114,16 +125,6 @@ main {
   font-weight: 600;
   width: 40px;
   height: 40px;
-}
-
-#questionNumber {
-  font-weight: 600;
-  width: 200px;
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.96);
-  text-shadow: 1px 0.5px 2px rgb(0, 0, 0);
-  font-weight: 600;
-  opacity: 0.8;
 }
 
 #counter {
@@ -203,13 +204,13 @@ h3 {
   text-shadow: 1px 0.5px 2px rgb(0, 0, 0);
 }
 
-#title {
+/* #title {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   opacity: 0.8;
-}
+} */
 #textStart {
   text-align: center;
   background-color: black;
@@ -221,7 +222,7 @@ h3 {
 }
 
 #card {
-  height: 500px;
+  height: 300px;
   width: 70%;
   display: flex;
   flex-direction: column;
@@ -263,11 +264,7 @@ ul button {
   font-weight: 600;
 }
 
-.btns:hover {
-  cursor: pointer;
-  color: rgba(255, 255, 255, 0.96);
-  background-color: rgba(33, 33, 121, 0.8);
-}
+
 
 footer {
   background-color: black;
@@ -309,5 +306,10 @@ footer {
     width: 60px;
     height: 60px;
     font-size: 1.4rem;
+  }
+  .btns:hover {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.96);
+    background-color: rgba(33, 33, 121, 0.8);
   }
 }
